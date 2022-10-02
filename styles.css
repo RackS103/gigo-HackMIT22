@@ -1,8 +1,21 @@
+.content {
+    max-width: 500px;
+    margin: auto;
+  }
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
 input[type="file"] {
     display: none;
 }
 
-  .button-87 {
+.button-87 {
     margin: 10px;
     padding: 15px 30px;
     text-align: center;
@@ -76,3 +89,68 @@ input[type="file"] {
     color: rgba(255, 255, 255, 1);
   }
   
+  body {
+    background:#202020;
+  }
+  
+  .shapes .sqare { 
+    position: absolute; 
+    top: 100px;
+    left: 500px;
+    width: 30px; 
+    height: 30px; 
+    background-color: transparent; 
+    border: 3px solid #fdc0b6;
+    transition: border-color .4s ease; 
+    -webkit-transition: border-color .4s ease; 
+  }
+  
+  .shapes .circle { 
+    position: absolute; 
+    top: 300px;
+    left: 700px;
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    background-color: transparent; 
+    border: 3px solid #fdc0b6;
+    transition: border-color .4s ease; 
+    -webkit-transition: border-color .4s ease; 
+  }
+  
+  .shapes .triangle {
+    position: absolute; 
+    width: 60px; 
+    height: 60px; 
+    top: 150px; 
+    left: 1200px; 
+  }
+  
+  .float {
+    -webkit-animation-name: Floating;
+      -webkit-animation-duration: 6s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in-out;
+  }
+  
+  @-webkit-keyframes Floating{
+      from {-webkit-transform:translate(0, 0px);}
+      65% {-webkit-transform:translate(0, 50px);}
+      to {-webkit-transform: translate(0, -0px);    }    
+  }
+  
+  .spin {
+    -webkit-animation-name: Spinning;
+      -webkit-animation-duration: 12s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in-out;
+  }
+  
+  @-webkit-keyframes Spinning{
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    } 
+  }

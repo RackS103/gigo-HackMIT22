@@ -1,10 +1,10 @@
+print("so far so good")
 import torch
 from torchvision import transforms
 from PIL import Image
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 class GarbagePredict():
     
@@ -24,11 +24,11 @@ class GarbagePredict():
         image = img_transform(image).unsqueeze(dim=0)
         pred_tensor = self.model(image)
         pred_tensor_np = pred_tensor.detach().numpy()[0]
-        plt = sns.barplot(x=self.labels.iloc[:,1], y=pred_tensor_np)
+        #plt = sns.barplot(x=self.labels.iloc[:,1], y=pred_tensor_np)
 
         prediction = torch.max(pred_tensor, dim=1)[1]
-        label, suggestion = (self.labels.iloc[prediction, 1], self.labels.iloc[prediction, 2])
-        return label, suggestion, plt
+        label, suggestion = (self.labels.iloc[prediction, 1].values[0], self.labels.iloc[prediction, 2].values[0])
+        return label, suggestion, #plt
 
 if __name__ == '__main__':
     test = GarbagePredict()
