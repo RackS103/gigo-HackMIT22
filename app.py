@@ -60,12 +60,21 @@ def update(**thing):
     else: return Response(json.dumps({"img":"default","bin":"default"}),
                           mimetype="text/event-stream")
 
+@app.route('/webcam/', methods=['POST', 'GET'])
+def webcam():
+
+
 @app.route("/script2.js",methods=["POST","GET"])
 def script():
     return send_from_directory("./","./script2.js")
+
+@app.route("/styles.css",methods=["POST","GET"])
+def styles():
+    return send_from_directory("./","./styles.css")
 
 @app.route("/uploads/<filename>", methods=["GET","POST"])
 def imagesend(filename):
     return send_from_directory("./uploads",filename)
 
-
+if __name__ == '__main__':
+    app.run(port=5000)

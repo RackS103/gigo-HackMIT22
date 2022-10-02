@@ -1,24 +1,28 @@
-<!doctype html>
-<header>
-<link rel="stylesheet" href="styles.css" title="external style sheet">
-<script defer src="script2.js"></script>
-</header>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gigo.io</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script2.js"></script>
+  </head>
 
-
-<body style="background-color:#2681a2;">
-  <div class="content">
-    <title>Upload new File</title>
-    <center><h1 style="color:white;">Upload new File</h1></center>
-    <form method=post enctype=multipart/form-data>
-      <label class="button-87">
-        <input type="file"/>
-        Choose File
-    </label>
-      <input class="button-87" role="button" type=submit value=Upload>
-    </form>
-    
-
-    <canvas id="result" width="256" height="256"></canvas>
-    <p id="which_bin"></p>
+  <body style="background-color:#2681a2;">
+    <div class="contentarea">
+      <h1>Gigo</h1>
+      <p>
+        Take a picture of your trash!
+      </p>
+      <div class="camera">
+        <video id="video">Video stream not available.</video>
+        <button id="startbutton">Take photo</button>
+      </div>
+      <canvas id="videocanvas"> </canvas>
+      <div class="output">
+        <img id="photo" alt="The screen capture will appear in this box." />
+      </div>
+      <hr>
+      <canvas id="result" width="256" height="256"></canvas>
+      <p id="which_bin"></p>
     </div>
-</body>
+  </body>
+</html>
