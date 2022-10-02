@@ -20,15 +20,12 @@
   let canvas = null;
   let photo = null;
   let startbutton = null;
-  let ctx = null
-  let t = null
 
   function startup() {
     video = document.getElementById('video');
     canvas = document.getElementById('videocanvas');
     photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
-    ctx = document.getElementById("result").getContext("2d")
 
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
       .then((stream) => {
@@ -64,7 +61,6 @@
     }, false);
 
     clearphoto();
-    t = setInterval(fetchAsync,1000);
   }
 
   // Fill the photo with an indication that none has been
@@ -113,7 +109,8 @@
   function update_website(data){
     if (data.img != "default"){
       console.log(data)
-      document.getElementById("which_bin").innerHTML = data.bin
+      document.getElementById("which_bin").innerHTML = data.label
+      document.getElementById('sugg').innerHTML = data.suggestions
     }
   }
 

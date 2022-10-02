@@ -27,8 +27,8 @@ class GarbagePredict():
         #plt = sns.barplot(x=self.labels.iloc[:,1], y=pred_tensor_np)
 
         prediction = torch.max(pred_tensor, dim=1)[1]
-        label, suggestion = (self.labels.iloc[prediction, 1].values[0], self.labels.iloc[prediction, 2].values[0])
-        return label, suggestion, #plt
+        label, suggestions = (self.labels.iloc[prediction, 1].values[0], self.labels.iloc[prediction, 2:].values[0])
+        return label, suggestions
 
 if __name__ == '__main__':
     test = GarbagePredict()
