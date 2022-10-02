@@ -1,7 +1,7 @@
 import base64
 from io import BytesIO
 import os
-from flask import Flask, flash, request, redirect, url_for, send_from_directory,Response
+from flask import Flask, flash, request, redirect, url_for, send_from_directory,Response, session
 from werkzeug.utils import secure_filename
 import json
 from PIL import Image
@@ -25,7 +25,7 @@ UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+app.secret_key = "AHiygpiyGygiuoiIIuouyuhhu"
 result = EventSender()
 
 def allowed_file(filename):
@@ -65,6 +65,9 @@ def update(**thing):
 @app.route("/script2.js",methods=["POST","GET"])
 def script():
     return send_from_directory("./","./script2.js")
+@app.route("/styles.css",methods=["POST","GET"])
+def css():
+    return send_from_directory("./","./styles.css")
 
 @app.route("/uploads/<filename>", methods=["GET","POST"])
 def imagesend(filename):
@@ -76,3 +79,6 @@ def pil2datauri(img):
     img.save(data, "JPEG")
     data64 = base64.b64encode(data.getvalue())
     return u'data:img/jpeg;base64,'+data64.decode('utf-8')
+
+if __name__ == "__main__":
+    app = Flask()
