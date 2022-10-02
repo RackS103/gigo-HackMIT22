@@ -1,14 +1,14 @@
-Index,Label,Suggestion
-0,Aluminum Can,Stuff
-1,Battery,Stuff
-2,Biological Waste,Stuff
-3,Cardboard,Stuff
-4,Clothes,Stuff
-5,Glass,Stuff
-6,HDPE Milk,Stuff
-7,Metal,Stuff
-8,Paper,Stuff
-9,PET,Stuff
-10,Plastic,Stuff
-11,Shoes,Stuff
-12,Trash,Stuff
+Index,Label,"Suggestion5(Glass/cans, Plastic, Paper, Landfill, Compost)","Suggestion3(Recycling, Compost, Landfill)","S2(Recycling, Landfill)"
+0,Aluminum Can,Glass/cans,Recycling,Recycling
+1,Battery,"Don't: Battery disposal bins are located in the Facilities Stockroom, E19-107; VWR Stockroom, 56-068; EHS, N52-496; all residence halls; and many Distributed Mail Centers (DMCs).","Don't: Battery disposal bins are located in the Facilities Stockroom, E19-107; VWR Stockroom, 56-068; EHS, N52-496; all residence halls; and many Distributed Mail Centers (DMCs).","Don't: Battery disposal bins are located in the Facilities Stockroom, E19-107; VWR Stockroom, 56-068; EHS, N52-496; all residence halls; and many Distributed Mail Centers (DMCs)."
+2,Biological Waste,Compost,Compost,Landfill
+3,Cardboard,Paper,Recycling,Recycling
+4,Clothes,Don't: Give away/sell/donate ,Don't: Give away/sell/donate ,Don't: Give away/sell/donate 
+5,Glass,Glass/cans,Recycling,Recycling
+6,HDPE Milk,Plastic,Recycling,Recycling
+7,Metal,Probably Landfill: Metal recycling is complicated.,Probably Landfill: Metal recycling is complicated.,Probably Landfill: Metal recycling is complicated.
+8,Paper,Paper,Recycling,Recycling
+9,PET,Plastic,Recycling,Recycling
+10,Plastic,Plastic,Recycling,Recycling
+11,Shoes,Don't: Give away/sell/donate ,Don't: Give away/sell/donate ,Don't: Give away/sell/donate 
+12,Trash,Landfill,Landfill,Landfill
