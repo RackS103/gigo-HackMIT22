@@ -1,17 +1,19 @@
+import base64
+from io import BytesIO
 import os
 from flask import Flask, flash, request, redirect, url_for, send_from_directory,Response
 from werkzeug.utils import secure_filename
 import json
-import PIL as pl
-
+from PIL import Image
+from Predict_from_model import GarbagePredict
 
 class EventSender():
     def __init__(self):
-        self.state = {"img":"default","bin":"default"}
+        self.state = {"img":"default","material":"default","suggestion":"default"}
         self.update_ready = 0
-    def update(self, image,bin_):
+    def update(self, image,material,suggestion):
         print("updating")
-        self.state = {"img":image,"bin":bin_}
+        self.state = {"img":image,"material":material,"suggestion":suggestion}
         self.update_ready = True
     
     def send(self):
@@ -21,7 +23,6 @@ class EventSender():
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-classification = "none yet"
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -45,10 +46,11 @@ def upload_file():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            print(file)
             filename = secure_filename(file.filename)
-            pl.Image
-            result.update(image = "/uploads/" + filename, bin_ = "trash")
+            img = Image.open(file)
+            predicter = GarbagePredict()
+            material,sugg = (predicter.predict(img))
+            result.update(pil2datauri(img),material,sugg)
 
     return send_from_directory("./","./index.html")
 
@@ -57,7 +59,7 @@ def update(**thing):
     if result.update_ready:
             return Response(result.send(),
                           mimetype="text/event-stream")
-    else: return Response(json.dumps({"img":"default","bin":"default"}),
+    else: return Response(json.dumps({"img":"default","material":"default","suggestion":"default"}),
                           mimetype="text/event-stream")
 
 @app.route("/script2.js",methods=["POST","GET"])
@@ -68,4 +70,9 @@ def script():
 def imagesend(filename):
     return send_from_directory("./uploads",filename)
 
-
+def pil2datauri(img):
+    #converts PIL image to datauri
+    data = BytesIO()
+    img.save(data, "JPEG")
+    data64 = base64.b64encode(data.getvalue())
+    return u'data:img/jpeg;base64,'+data64.decode('utf-8')

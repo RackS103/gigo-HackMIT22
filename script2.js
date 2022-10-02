@@ -15,6 +15,7 @@ if (data.img != "default"){
   ctx.drawImage(img,0,0,256,256)
   }, false);
   img.src = data.img; // Set source path
-  document.getElementById("which_bin").innerHTML = data.bin
+  document.getElementById("which_bin").innerHTML = data.material
+  document.getElementById("sugg").innerHTML = data.suggestion
 }
 }
