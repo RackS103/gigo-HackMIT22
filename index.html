@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gigo.io</title>
+    <title>gigo</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script2.js"></script>
   </head>
 
   <body style="background-color:#2681a2;">
+
+    <div class="shapes float">
+      <div class="sqare spin"></div>
+       <div class="circle"></div>
+      <svg class="triangle spin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" style="transform: matrix3d(0.17364, 0.98481, 0, 0, -0.98481, 0.17364, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
+                        <polygon fill="none" stroke-width="2px" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" points="14.921,2.27 28.667,25.5 1.175,25.5 "></polygon>
+                    </svg>
+      
+    </div>
+
     <div class="contentarea vertical-center">
-      <h1>Gigo</h1>
-      <p>
+      <h1 style="text-align:center;font-weight:bold">Gigo</h1>
+      <p style="margin: absolute; bottom: 30%"> 
         Take a picture of your trash!
       </p>
       <div class="camera">
         <video id="video">Video stream not available.</video>
         <button id="startbutton">Take photo</button>
       </div>
-      <canvas id="videocanvas"> </canvas>
+      <canvas id="videocanvas" style="margin: absolute; top: 15%"> </canvas>
       <div class="output">
         <img id="photo" alt="The screen capture will appear in this box." />
       </div>
-      
-      <div class="shapes float">
-        <div class="sqare spin"></div>
-         <div class="circle"></div>
-        <svg class="triangle spin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" style="transform: matrix3d(0.17364, 0.98481, 0, 0, -0.98481, 0.17364, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
-                          <polygon fill="none" stroke-width="2px" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" points="14.921,2.27 28.667,25.5 1.175,25.5 "></polygon>
-                      </svg>
-        
-      </div>
 
-      <hr>
-      
-      <p id="which_bin"></p>
-      <p id="sugg"></p>
+      <p id="which_item" style="font-size:30px; margin:0%; color:white"></p>
+      <div>
+        <p id="bin1" class="bin" style="background-color: green;"> Food Waste</p>
+        <p id="bin2" class="bin" style="background-color: blue;"> Recycling</p>
+        <p id="bin3" class="bin" style="background-color: black;"> Trash </p>
+      </div>
     </div>
   </body>
 </html>

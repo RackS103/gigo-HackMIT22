@@ -109,8 +109,10 @@
   function update_website(data){
     if (data.img != "default"){
       console.log(data)
-      document.getElementById("which_bin").innerHTML = data.label
-      document.getElementById('sugg').innerHTML = data.suggestions
+      document.getElementById("which_item").innerHTML = data.label
+      document.getElementById('bin1').innerHTML = 'Food Waste <br><br>' + data.suggestions[0]
+      document.getElementById('bin2').innerHTML = 'Recycling <br><br>' + data.suggestions[1]
+      document.getElementById('bin3').innerHTML = 'Trash <br><br>' + data.suggestions[2]
     }
   }
 
