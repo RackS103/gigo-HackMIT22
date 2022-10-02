@@ -23,13 +23,6 @@
   let ctx = null
   let t = null
 
-  let result = "lol"
-  async function fetchAsync () {
-    fetch('/update')
-    .then((response) => response.json())
-    .then((data) => update_website(data));
-  }
-
   function startup() {
     video = document.getElementById('video');
     canvas = document.getElementById('videocanvas');
@@ -120,11 +113,6 @@
   function update_website(data){
     if (data.img != "default"){
       console.log(data)
-      const img = new Image();   // Create new img element
-      img.addEventListener('load', () => {
-      ctx.drawImage(img,0,0,256,256)
-      }, false);
-      img.src = data.img; // Set source path
       document.getElementById("which_bin").innerHTML = data.bin
     }
   }

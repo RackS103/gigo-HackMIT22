@@ -32,43 +32,43 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            img = Image.open(file)
-            predicter = GarbagePredict()
-            material,sugg = (predicter.predict(img))
-            result.update(pil2datauri(img),material,sugg)
+# @app.route('/', methods=['GET', 'POST'])
+# def upload_file():
+#     if request.method == 'POST':
+#         # check if the post request has the file part
+#         if 'file' not in request.files:
+#             flash('No file part')
+#             return redirect(request.url)
+#         file = request.files['file']
+#         # If the user does not select a file, the browser submits an
+#         # empty file without a filename.
+#         if file.filename == '':
+#             flash('No selected file')
+#             return redirect(request.url)
+#         if file and allowed_file(file.filename):
+#             filename = secure_filename(file.filename)
+#             img = Image.open(file)
+#             predicter = GarbagePredict()
+#             material,sugg = (predicter.predict(img))
+#             result.update(pil2datauri(img),material,sugg)
 
-    return send_from_directory("./","./index.html")
+#     return send_from_directory("./","./index.html")
 
-@app.route("/update/", methods=["POST","GET"])
-def update(**thing):
-    if result.update_ready:
-            return Response(result.send(),
-                          mimetype="text/event-stream")
-    else: return Response(json.dumps({"img":"default","material":"default","suggestion":"default"}),
-                          mimetype="text/event-stream")
+# @app.route("/update/", methods=["POST","GET"])
+# def update(**thing):
+#     if result.update_ready:
+#             return Response(result.send(),
+#                           mimetype="text/event-stream")
+#     else: return Response(json.dumps({"img":"default","material":"default","suggestion":"default"}),
+#                           mimetype="text/event-stream")
 
-@app.route('/webcam/', methods=['POST', 'GET'])
-def webcam():
+@app.route('/webcam', methods=['GET', 'POST'])
 
 
 @app.route("/script2.js",methods=["POST","GET"])
 def script():
     return send_from_directory("./","./script2.js")
+
 @app.route("/styles.css",methods=["POST","GET"])
 def css():
     return send_from_directory("./","./styles.css")
@@ -83,7 +83,11 @@ def imagesend(filename):
 
 if __name__ == '__main__':
     app.run(port=5000)
-    
+
+def datauri2pil(datauri):
+    data = base64.b64decode(datauri)
+    return Image(data).convert('RGB')
+
 def pil2datauri(img):
     #converts PIL image to datauri
     data = BytesIO()
