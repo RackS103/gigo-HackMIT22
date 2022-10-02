@@ -1,15 +1,24 @@
 <!doctype html>
 <header>
+<link rel="stylesheet" href="styles.css" title="external style sheet">
 <script defer src="script2.js"></script>
 </header>
-<body>
+
+
+<body style="background-color:#2681a2;">
+  <div class="content">
     <title>Upload new File</title>
-    <h1>Upload new File</h1>
+    <center><h1 style="color:white;">Upload new File</h1></center>
     <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
+      <label class="button-87">
+        <input type="file"/>
+        Choose File
+    </label>
+      <input class="button-87" role="button" type=submit value=Upload>
     </form>
+    
 
     <canvas id="result" width="256" height="256"></canvas>
     <p id="which_bin"></p>
+    </div>
 </body>
