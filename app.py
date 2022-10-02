@@ -94,9 +94,9 @@ def imagesend(filename):
     return send_from_directory("./uploads",filename)
 
 def datauri2pil(datauri):
-    print(datauri)
-    data = base64.b64decode(datauri.split(',')[1])
-    return Image().open(data).convert('RGB')
+    raw_data = datauri.split(",")[1]
+    data = base64.b64decode(raw_data)
+    return Image.open(BytesIO(data)).convert('RGB')
 
 def pil2datauri(img):
     #converts PIL image to datauri
