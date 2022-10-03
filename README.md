@@ -1,7 +1,7 @@
 # gigo
 *Streamlining sustainability, one garbage bin at a time.*
 
-Created by Rac Mukkamala, Hasan Yildiz, Hannah Park-Kaufmann, and Lucas Shoji for HackMIT 2022
+Created by Rac Mukkamala, Hasan Zeki Yıldız, Hannah Park-Kaufmann, and Lucas Shoji for HackMIT 2022
 
 **Sustainability Track 1st Place Winner | Top 10 overall project at HackMIT 2022**
 
